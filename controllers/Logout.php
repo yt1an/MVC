@@ -1,9 +1,9 @@
 <?php
-session_start();
-unset($_SESSION['username']);
+session_start(); // Starts session
+unset($_SESSION['username']); // Removes key
 
-session_destroy();
-header("Location: ../views/login.php");
+session_destroy(); // Destroys session
+header("Location: ../views/login.php"); // Redirect to login
 
-exit();
+exit(); // Stops all scripts
 ?>

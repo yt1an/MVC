@@ -1,9 +1,7 @@
 <?php
 
-    session_start();
-
-    require_once '../models/Database.php';
-    require_once '../models/User.php';
+    require_once '../models/Database.php'; // Database class file
+    require_once '../models/User.php'; //User class file
 
     $database = new Database();
     $dbConnection = $database->getConnection();
@@ -34,20 +32,20 @@
                 
                 //Match Data
                 if($password === $userData['password']){
+
+                    session_start();
                     $_SESSION['username'] = $userData['username'];
 
-                    header("Location: ../views/dashboard.php");
-                    exit();
+                    header("Location: ../views/dashboard.php"); //Redirect to dashboard
+                    exit(); // Stops all scripts
                 } else {
-                    header("Location: ../views/login.php?error=wrong_pass");
-                    exit();
+                    header("Location: ../views/login.php?error=wrong_pass"); //Redirect to login
+                    exit(); // Stops all scripts
                 }
-
             } else {
-                header("Location: ../views/login.php?error=acct_dont_exist");
+                header("Location: ../views/login.php?error=acct_dont_exist"); //Redirect to login
                 exit();
             }
-
         }
     }
 ?>
